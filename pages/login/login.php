@@ -17,7 +17,6 @@ $login = new Validar_login();
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -51,14 +50,42 @@ $login = new Validar_login();
       ?>
     </form>
     <div class="row">
-        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
-          <a href="#"><i class="fa fa-lock"></i> Esqueci minha senha</a>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 text-right">
-          <a href="../usuarios/cadastrar_novo_usuario.php"><i class="fa fa-pencil-square-o"></i> Cadastre-se</a>
-        </div>
+      <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6">
+        <a href="#" data-toggle="modal" data-target="#modal_recuperacao"><i class="fa fa-lock"></i> Esqueci minha senha</a>
       </div>
+      <div class="col-xs-6 col-sm-6 col-lg-6 col-md-6 text-right">
+        <a href="../usuarios/cadastrar_novo_usuario.php"><i class="fa fa-pencil-square-o"></i> Cadastre-se</a>
+      </div>
+    </div>
   </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal_recuperacao" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span></button>
+        <h4 class="modal-title">Recuperação de senha</h4>
+      </div>
+      <form method="POST" action="#" role="form">
+        <div class="modal-body">
+          <p>Digite abaixo o seu e-mail cadastrado no sistema.</p>
+            <div class="form-group">
+              <label>Email*</label>
+              <input type="text" name="email" class="form-control" id="ipt_email">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary pull-left"><i class="fa fa-check" aria-hidden="true"></i> Confirmar</button>
+          <button type="button" class="btn btn-danger pull-left" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
 </div>
 
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
