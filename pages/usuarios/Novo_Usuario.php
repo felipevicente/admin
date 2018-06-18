@@ -2,6 +2,7 @@
 
 require_once '../../app/database/Conexao.php';
 require_once '../../app/control/Sessao.php';
+require_once '../../app/outros/Msg.php';
 
 class Novo_usuario {
 
@@ -38,20 +39,13 @@ class Novo_usuario {
 
 	}
 
-	function MsgErro($msg){
-		echo '<div class="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h4><i class="icon fa fa-warning"></i> Ops!</h4>
-                '.$msg.'
-              </div>';
-	}
-
 	function ValidarUsuario($post){
+		$msg = new Msg();
 		switch ($post) {
 
 			case $post['senha'] !== $post['conf_senha']:
 				$this->ErroValidarUsuario($post);
-		        $this->MsgErro('Senhas não corespondem.');
+		        $msg->MsgErro('Senhas não corespondem.');
 				break;
 
 			case isset($post['email']):
@@ -71,7 +65,7 @@ class Novo_usuario {
 		            	//VALIDA SE O USUÁRIO EXISTE
 		            	if ($resultado['email'] >= 1) {
 		            		$this->ErroValidarUsuario($post);
-		            		$this->MsgErro('Email já cadastrado.');
+		            		$msg->MsgErro('Email já cadastrado.');
 		            	} else {
 		            		$this->CadastrarUsuario($post);
 		            	}
@@ -131,7 +125,7 @@ class Novo_usuario {
         $sobre_nome = $post['sobre_nome'];
         $email = $post['email'];
         $telefone = $post['telefone'];
-        $senha = $post['senha'];
+        $senha = md5($post['senha']);
         $usuario_principal = 'S';
         $data_cadastro = date('Y-m-d H:i');
 

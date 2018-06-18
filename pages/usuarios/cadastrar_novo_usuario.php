@@ -1,5 +1,4 @@
 <?php
-
 require_once 'Novo_usuario.php';
 
 $usuario = new Novo_usuario();
@@ -16,13 +15,10 @@ $usuario = new Novo_usuario();
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
-  <!-- <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"> -->
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition login-page" style="background-image: url('../img/bg-login.jpg'); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;" alt="Responsive image">
-  <!-- style="background-image: url('../img/bg-login.jpg')" -->
-  <!-- <img src="../img/bg-login.jpg" class="img-fluid" alt="Responsive image"> -->
 <div class="login-box">
   <div class="login-logo">
     <a href="../login/login.php" style="text-shadow: 2px 2px 2px #000000; color: #fff !important;"><b>VCT </b>Solutions</a>
@@ -47,13 +43,6 @@ $usuario = new Novo_usuario();
 
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- <script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script> -->
-
-<script type="text/javascript">
-/*$('#ipt_telefone').datepicker({
-      autoclose: true
-    })*/
-</script>
 
 </body>
 </html>

@@ -32,11 +32,11 @@ $login = new Validar_login();
     <h4>Entrar no Sistema</h4>
     <form action="#" method="post">
       <div class="form-group has-feedback">
-        <input type="text" name="email" id="email" class="form-control" placeholder="Email" autofocus>
+        <input type="text" name="email" id="email" class="form-control" placeholder="Email" required="required" autofocus>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" name="senha" class="form-control" placeholder="Senha">
+        <input type="password" name="senha" class="form-control" placeholder="Senha" required="required">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
