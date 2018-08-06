@@ -67,26 +67,27 @@ $usuario = new Usuario();
           <div class="box">
             <div class="box-header">
               <div class="row mg-bottom">
-                <div class="col-md-6">
+                <div class="col-md-12">
+                  <form action="listar_usuario.php" id="busca_simples" role="search" method="get" accept-charset="utf-8" novalidate="novalidate">
                     <a href="cadastar_usuario.php" id="btn_adicionar" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Adicionar Usuário</a>
                     <a href="#" id="btn_grupo_usuario" class="btn btn-warning"><span class="fa fa-sitemap"></span> Grupo de Usuários</a>
+                    <button class="btn btn-primary" id="btn_busca_avancada" type="button">
+                      <span class=""><i class="fa fa-search-plus" id="icon_busca"></i> Busca avançada</span>
+                    </button>
+                  </form>
                 </div>
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                     <form action="listar_usuario.php" id="busca_simples" role="search" method="get" accept-charset="utf-8" novalidate="novalidate">
                       <div class="input-group">
-                        <input type="hidden" name="busca_simples" value="true" autocomplete="off" id="busca_simples">
-                        <input name="busca" id="ipt_busca_simples" placeholder="Busca Rápida" class="form-control" maxlength="100" autocomplete="off" type="text">
                         <div class="input-group-btn">
-                            <button class="btn btn-primary mg-right" type="submit"><i class="fa fa-search"></i></button>
                             <button class="btn btn-primary" id="btn_busca_avancada" type="button">
-                              <span class="visible-xs"><i class="fa fa-search-plus" data-toggle="tooltip" data-placement="left" data-original-title="Busca avançada"></i></span>
-                              <span class="hidden-xs"><i class="fa fa-search-plus" id="icon_busca"></i> Busca avançada</span>
+                              <span class=""><i class="fa fa-search-plus" id="icon_busca"></i> Busca avançada</span>
                             </button>
                         </div>
                       </div>
                     </form>
                 </div>
-              </div>
+ -->              </div>
               <div class="row dis-none" id="div_form_busca_avancada">
                   <div class="col-sm-12 col-lg-12 col-md-12">
                     <div class="col-sm-12 col-lg-12 col-md-12 well well-sm">
@@ -109,6 +110,7 @@ $usuario = new Usuario();
                         <div class="both col-sm-12 col-lg-12 col-md-12">
                           <button class="btn btn-primary" type="submit"><span class="fa fa-search"></span> Buscar</button>
                           <button type="reset" id="reset-form" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Limpar</button>
+                          <a href="listar_usuario.php" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
                         </div>
                       </form>
                       </div>
@@ -134,9 +136,6 @@ $usuario = new Usuario();
                     switch ($_GET) {
                       case $_GET == 0: //SEM GET
                         $usuario->listarUsuario();
-                        break;
-                      case isset($_GET['busca_simples']) == true: //BUSCA SIMPLES
-                        $usuario->buscaSimplesUsuario($_GET['busca']);
                         break;
                       case  isset($_GET['busca_avancada']) == true: //BUSCA AVANÇADA
                         $usuario->buscaAvancadaUsuario($_GET);
@@ -165,12 +164,11 @@ $usuario = new Usuario();
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script> -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <script src="../../plugins/sweetalert/sweetalert.min.js"></script>
 <script src="../../dist/js/adminlte.min.js"></script>

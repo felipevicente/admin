@@ -2,11 +2,11 @@ $(document).ready(function() {
 
   var dataTable = $('#tb_lista_usuario').DataTable({
         'paging'      : true,
-        'lengthChange': false,
-        'searching'   : false,
+        'lengthChange': true,
+        'searching'   : true,
         'ordering'    : false,
         'info'        : true,
-        'autoWidth'   : true,
+        'autoWidth'   : true
     });
 
   display_form();
@@ -45,10 +45,11 @@ $(document).ready(function() {
             title: "",
             text: "Deseja excluir registro?",
             type: "warning",
+            confirmButtonColor: "#367fa9",
+            confirmButtonText: "Excluir",
             showCancelButton: true,
             cancelButtonText: "Cancelar",
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Excluir",
+            cancelButtonColor: "#D73925",
             closeOnConfirm: false
         }, function () {
             $.ajax({

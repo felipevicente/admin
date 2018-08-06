@@ -215,8 +215,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <?php 
-                echo '<img src="../../uploads/img/'.$_SESSION['sessao_dados_usuario']['foto'].'" class="user-image" alt="User Image">'
+              <?php
+              if (!empty($_SESSION['sessao_dados_usuario']['foto'])) {
+                echo '<img src="../../uploads/img/'.$_SESSION['sessao_dados_usuario']['foto'].'" class="user-image" alt="User Image"';
+              } else {
+                echo '<img src="../img/user.png " class="user-image" alt="User Image">';
+              }
+                //echo '<img src="../../uploads/img/'.$_SESSION['sessao_dados_usuario']['foto'].'" class="user-image" alt="User Image">'
               ?> 
               <span class="hidden-xs">
                 <?php
@@ -228,7 +233,12 @@
               <!-- User image -->
               <li class="user-header">
               <?php 
-                echo '<img src="../../uploads/img/'.$_SESSION['sessao_dados_usuario']['foto'].'" class="img-circle" alt="User Image">'
+                if (!empty($_SESSION['sessao_dados_usuario']['foto'])) {
+                  echo '<img src="../../uploads/img/'.$_SESSION['sessao_dados_usuario']['foto'].'" class="img-circle" alt="User Image">';
+                } else {
+                  echo '<img src="../img/user.png " class="img-circle" alt="User Image">';
+                }
+                //echo '<img src="../../uploads/img/'.$_SESSION['sessao_dados_usuario']['foto'].'" class="img-circle" alt="User Image">'
               ?>
                 <p>
                   <?php

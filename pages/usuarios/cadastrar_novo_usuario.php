@@ -18,7 +18,7 @@ $usuario = new Novo_usuario();
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition login-page" style="background-image: url('../img/bg-login.jpg'); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;" alt="Responsive image">
+<body class="hold-transition login-page" style="background-image: url('../img/bg_salao4.jpg'); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;" alt="Responsive image">
 <div class="login-box">
   <div class="login-logo">
     <a href="../login/login.php" style="text-shadow: 2px 2px 2px #000000; color: #fff !important;"><b>VCT </b>Solutions</a>

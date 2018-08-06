@@ -7,8 +7,11 @@
         <div class="pull-left image">
           <!-- <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"> -->
           <?php 
-            //echo '<img src="../../uploads/img/'.$_SESSION['sessao_dados_usuario']['foto'].'"class="img-circle" alt="User Image">'
-            echo '<img src="../../uploads/img/user_felipe.jpg" class="img-circle" alt="User Image">'
+            if (!empty($_SESSION['sessao_dados_usuario']['foto'])) {
+              echo '<img src="../../uploads/img/'.$_SESSION['sessao_dados_usuario']['foto'].'"class="img-circle" alt="User Image">';
+            } else {
+              echo '<img src="../img/user.png "class="img-circle" alt="User Image">';
+            }
           ?> 
         </div>
         <div class="pull-left info">
