@@ -23,7 +23,7 @@ class Usuario {
                 } else {
                     $ativo = '<i class="glyphicon glyphicon glyphicon-remove text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Inativo">&nbsp;</i>';
                 }
-                echo '<tr>
+                echo '<tr id="'.$row['id_usuario'].'">
                         <td>'.$row['id_usuario'].'</td>
                         <td>'.$row['nome'].' '.$row['sobre_nome'].'</td>
                         <td>'.$ativo.'</td>
@@ -34,12 +34,9 @@ class Usuario {
                          <a href="cadastar_usuario.php?editar='.$row['id_usuario'].'" class="btn btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar">
                           <span class="glyphicon glyphicon-edit"></span>
                          </a>
-                         <!--- <a href="#" class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Detalhar">
-                          <span class="glyphicon glyphicon-search"></span>
-                         </a>--->
-                         <a href="#" class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Excluir">
+                         <button name="delete" id="'.$row['id_usuario'].'" class="btn btn-xs btn-danger delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="Excluir">
                           <span class="glyphicon glyphicon-remove"></span>
-                         </a>
+                         </button>
                         </td>
                       </tr>';
             }
@@ -73,7 +70,7 @@ class Usuario {
                     } else {
                         $ativo = '<i class="glyphicon glyphicon glyphicon-remove text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Inativo">&nbsp;</i>';
                     }
-                    echo '<tr>
+                    echo '<tr id="'.$row['id_usuario'].'">
                            <td>'.$row['id_usuario'].'</td>
                            <td>'.$row['nome'].' '.$row['sobre_nome'].'</td>
                            <td>'.$ativo.'</td>
@@ -84,12 +81,9 @@ class Usuario {
                              <a href="cadastar_usuario.php?editar='.$row['id_usuario'].'" class="btn btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar">
                               <span class="glyphicon glyphicon-edit"></span>
                              </a>
-                             <!--- <a href="#" class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Detalhar">
-                              <span class="glyphicon glyphicon-search"></span>
-                             </a>--->
-                             <a href="#" class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Excluir">
+                             <button name="delete" id="'.$row['id_usuario'].'" class="btn btn-xs btn-danger delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="Excluir">
                               <span class="glyphicon glyphicon-remove"></span>
-                             </a>
+                             </button>
                             </td>
                           </tr>';
                 }
@@ -125,7 +119,7 @@ class Usuario {
                     } else {
                         $ativo = '<i class="glyphicon glyphicon glyphicon-remove text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Inativo">&nbsp;</i>';
                     }
-                    echo '<tr>
+                    echo '<tr id="'.$row['id_usuario'].'">
                            <td>'.$row['id_usuario'].'</td>
                            <td>'.$row['nome'].' '.$row['sobre_nome'].'</td>
                            <td>'.$ativo.'</td>
@@ -136,12 +130,9 @@ class Usuario {
                             <a href="cadastar_usuario.php?editar='.$row['id_usuario'].'" class="btn btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar">
                               <span class="glyphicon glyphicon-edit"></span>
                             </a>
-                            <!--- <a href="#" class="btn btn-xs btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Detalhar">
-                             <span class="glyphicon glyphicon-search"></span>
-                            </a>--->
-                            <a href="#" class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Excluir">
-                             <span class="glyphicon glyphicon-remove"></span>
-                            </a>
+                             <button name="delete" id="'.$row['id_usuario'].'" class="btn btn-xs btn-danger delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="Excluir">
+                              <span class="glyphicon glyphicon-remove"></span>
+                             </button>
                            </td>
                           </tr>';
                 }

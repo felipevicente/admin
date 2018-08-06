@@ -1,15 +1,13 @@
 $(document).ready(function() {
 
-  $(function () {
-    $('#tb_lista_usuario').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : false,
-      'info'        : true,
-      'autoWidth'   : true
-    })
-  })
+  var dataTable = $('#tb_lista_usuario').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : false,
+        'info'        : true,
+        'autoWidth'   : true,
+    });
 
   display_form();
 
@@ -39,4 +37,37 @@ $(document).ready(function() {
       display_form()
     }
   });
+
+  $(document).on('click', '.delete', function() {
+        var id_usuario = $(this).attr("id");
+
+        swal({
+            title: "",
+            text: "Deseja excluir registro?",
+            type: "warning",
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Excluir",
+            closeOnConfirm: false
+        }, function () {
+            $.ajax({
+                url: "delete.php",
+                method: "POST",
+                data: {
+                    id_usuario: id_usuario
+                },
+                success: function(data) {
+                    if(data === "true"){
+                        swal("Registro Excluido!", "", "success");
+                        $("#"+id_usuario).remove();
+                    } 
+                    if(data ==="false") {
+                        swal("Erro ao Excluir!", "", "alert");
+                    }
+                }
+            });
+        });
+
+    });
 });

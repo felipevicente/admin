@@ -20,7 +20,7 @@ $login = new Validar_login();
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition login-page" style="background-image: url('../img/bg-login.jpg'); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;" alt="Responsive image">
+<body class="hold-transition login-page" style="background-image: url('../img/bg_salao5.jpg'); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;" alt="Responsive image">
   <!-- style="background-image: url('../img/bg-login.jpg')" -->
   <!-- <img src="../img/bg-login.jpg" class="img-fluid" alt="Responsive image"> -->
 <div class="login-box">

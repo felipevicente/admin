@@ -30,6 +30,8 @@ $usuario = new Usuario();
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+  <!-- Sweetalert Css -->
+  <link href="../../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -170,6 +172,7 @@ $usuario = new Usuario();
 <script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<script src="../../plugins/sweetalert/sweetalert.min.js"></script>
 <script src="../../dist/js/adminlte.min.js"></script>
 <script src="../../dist/js/demo.js"></script>
 <script src="usuario.js"></script>

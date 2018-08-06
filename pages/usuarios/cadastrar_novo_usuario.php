@@ -1,5 +1,5 @@
 <?php
-require_once 'Novo_usuario.php';
+require_once 'novo_usuario.php';
 
 $usuario = new Novo_usuario();
 
