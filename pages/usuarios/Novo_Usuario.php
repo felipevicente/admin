@@ -16,8 +16,8 @@ class Novo_usuario {
 			        <input type="text" name="sobre_nome" class="form-control" id="ipt_sobre_nome" required="required">
 			      </div>
 			      <div class="form-group">
-			        <label>Telefone</label>
-			        <input type="text" name="telefone" class="form-control" id="ipt_telefone" data-inputmask=\'"mask": "(999) 999-9999"\' data-mask required="required">
+			        <label>Celular</label>
+			        <input type="text" name="telefone" class="form-control" id="ipt_telefone" data-inputmask=\'"mask": "(99) 99999-9999"\' data-mask required="required">
 			      </div>
 			      <div class="form-group">
 			        <label>Email</label>
@@ -92,7 +92,7 @@ class Novo_usuario {
 			      </div>
 			      <div class="form-group">
 			        <label>Telefone</label>
-			        <input type="text" name="telefone" value="'.$post['telefone'].'" class="form-control" id="ipt_telefone" data-inputmask=\'"mask": "(999) 999-9999"\' data-mask required="required">
+			        <input type="text" name="telefone" value="'.$post['telefone'].'" class="form-control" id="ipt_telefone" data-inputmask=\'"mask": "(99) 99999-9999"\' data-mask required="required">
 			      </div>
 			      <div class="form-group">
 			        <label>Email</label>
