@@ -76,18 +76,7 @@ $usuario = new Usuario();
                     </button>
                   </form>
                 </div>
-                <!-- <div class="col-md-6">
-                    <form action="listar_usuario.php" id="busca_simples" role="search" method="get" accept-charset="utf-8" novalidate="novalidate">
-                      <div class="input-group">
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary" id="btn_busca_avancada" type="button">
-                              <span class=""><i class="fa fa-search-plus" id="icon_busca"></i> Busca avançada</span>
-                            </button>
-                        </div>
-                      </div>
-                    </form>
-                </div>
- -->              </div>
+              </div>
               <div class="row dis-none" id="div_form_busca_avancada">
                   <div class="col-sm-12 col-lg-12 col-md-12">
                     <div class="col-sm-12 col-lg-12 col-md-12 well well-sm">
@@ -98,6 +87,7 @@ $usuario = new Usuario();
                             <select name="tipo_busca" class="form-control" autocomplete="off" id="tipo_busca">
                             <option value="id_usuario">Código</option>
                             <option value="nome">Nome</option>
+                            <option value="sobre_nome">Sobre Nome</option>
                             <option value="ativo">Ativo</option>
                             <option value="email">Email</option>
                             <option value"telefone" >Telefone</option>
@@ -110,7 +100,6 @@ $usuario = new Usuario();
                         <div class="both col-sm-12 col-lg-12 col-md-12">
                           <button class="btn btn-primary" type="submit"><span class="fa fa-search"></span> Buscar</button>
                           <button type="reset" id="reset-form" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Limpar</button>
-                          <a href="listar_usuario.php" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancelar</a>
                         </div>
                       </form>
                       </div>
@@ -150,6 +139,39 @@ $usuario = new Usuario();
           <!-- /.box -->
         </div>
         <!--/.col (left) -->
+        <div class="modal modal-success fade" id="modal_alterar_senha" style="display: none;">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Alterar senha</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <form>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Senha*</label>
+                        <input type="password" name="senha" class="form-control" id="ipt_senha">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Confirmar Senha*</label>
+                        <input type="password" name="conf_senha" class="form-control" id="ipt_conf_senha">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn  btn-danger pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Fechar</button>
+                <button type="button" class="btn btn-outline"><i class="fa fa-check"></i>  Confirmar</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
       </div>
       <!-- /.row -->
     </section>
@@ -173,7 +195,7 @@ $usuario = new Usuario();
 <script src="../../plugins/sweetalert/sweetalert.min.js"></script>
 <script src="../../dist/js/adminlte.min.js"></script>
 <script src="../../dist/js/demo.js"></script>
-<script src="usuario.js"></script>
+<script src="js/usuario.js"></script>
 
 </body>
 </html>

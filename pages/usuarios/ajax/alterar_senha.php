@@ -1,5 +1,5 @@
 <?php
-require_once '../../app/database/Conexao.php';
+require_once '../../../app/database/Conexao.php';
 //VERIFICA SE O  POSSUI O ID DO USUARIO
 if (isset($_POST["id_usuario"])) {
     //ABRE CONEXÃO

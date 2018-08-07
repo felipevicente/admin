@@ -24,6 +24,15 @@ $(document).ready(function() {
       $('#icon_busca').removeClass('fa-search-minus');
       $('#icon_busca').addClass('fa-search-plus');
     }
+
+    let searchParams = new URLSearchParams(window.location.search);
+    var tipo_busca = searchParams.get('tipo_busca');
+    var busca = searchParams.get('busca');
+    if(tipo_busca ||  busca){
+      $("#tipo_busca").val(tipo_busca);
+      $("#ipt_busca_avancada").val(busca);
+      $("#ipt_busca_avancada").focus();
+    }
   }
 
   $("#btn_busca_avancada").click(function() {
@@ -45,7 +54,7 @@ $(document).ready(function() {
             title: "",
             text: "Deseja excluir registro?",
             type: "warning",
-            confirmButtonColor: "#367fa9",
+            confirmButtonColor: "#dd4b39",
             confirmButtonText: "Excluir",
             showCancelButton: true,
             cancelButtonText: "Cancelar",
@@ -53,7 +62,7 @@ $(document).ready(function() {
             closeOnConfirm: false
         }, function () {
             $.ajax({
-                url: "delete.php",
+                url: "ajax/delete.php",
                 method: "POST",
                 data: {
                     id_usuario: id_usuario
@@ -71,4 +80,27 @@ $(document).ready(function() {
         });
 
     });
+
+    $('#btn_alterar_senha').click(function(){
+               $.ajax({
+                    url: 'ajax/alterar_senha.php',
+                    method: 'POST',
+                    dataType: 'json',
+                    async: true,
+                    data: $("#form_alterar_senha").serialize(),
+                    success: function(data){
+                        switch(data){
+                            case "true":
+                                msg_alerta("Cadastrado realizado com sucesso!");
+                                break;
+                            case "false":
+                                msg_alerta("Erro ao cadastrar!");
+                                break;
+                            case "existe":
+                                msg_alerta("Email já cadastrado!");
+                                break;
+                        }
+                    }
+                });
+        });
 });

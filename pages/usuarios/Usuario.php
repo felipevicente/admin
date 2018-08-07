@@ -31,11 +31,14 @@ class Usuario {
                         <td>'.$row['telefone'].'</td>
                         <td>'.date('d/m/Y H:i:s', strtotime($row['data_cadastro'])).'</td>
                         <td>
-                         <a href="cadastar_usuario.php?editar='.$row['id_usuario'].'" class="btn btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar">
+                         <a href="cadastar_usuario.php?editar='.$row['id_usuario'].'" class="btn btn-xs btn-warning" data-toggle="tooltip" data-placement="top" data-original-title="Editar">
                           <span class="glyphicon glyphicon-edit"></span>
                          </a>
-                         <button name="delete" id="'.$row['id_usuario'].'" class="btn btn-xs btn-danger delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="Excluir">
+                         <button name="delete" id="'.$row['id_usuario'].'" class="btn btn-xs btn-danger delete" data-toggle="tooltip" data-placement="top" data-original-title="Excluir">
                           <span class="glyphicon glyphicon-remove"></span>
+                         </button>
+                         <button name="alt_senha" id="'.$row['id_usuario'].'" class="btn btn-xs bg-purple alt_senha" data-toggle="modal" data-target="#modal_alterar_senha" data-original-title="Alterar Senha">
+                          <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                          </button>
                         </td>
                       </tr>';
@@ -43,7 +46,7 @@ class Usuario {
         }
     }
 
-    public function buscaSimplesUsuario($busca){
+    /*public function buscaSimplesUsuario($busca){
 
         if ($busca === "") {
             echo $this->listarUsuario();
@@ -89,7 +92,7 @@ class Usuario {
                 }
             }
         }
-    }
+    }*/
 
     public function buscaAvancadaUsuario($busca){
 
@@ -132,6 +135,9 @@ class Usuario {
                             </a>
                              <button name="delete" id="'.$row['id_usuario'].'" class="btn btn-xs btn-danger delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="Excluir">
                               <span class="glyphicon glyphicon-remove"></span>
+                             </button>
+                             <button name="alt_senha" id="'.$row['id_usuario'].'" class="btn btn-xs bg-purple alt_senha" data-toggle="modal" data-target="#modal_alterar_senha" data-original-title="Alterar Senha">
+                              <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                              </button>
                            </td>
                           </tr>';
@@ -240,18 +246,6 @@ class Usuario {
                       <div class="form-group">
                         <label>Telefone</label>
                         <input type="text" name="telefone" value="'.$row['telefone'].'" class="form-control" id="ipt_telefone">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Senha*</label>
-                        <input type="password" name="senha" value="'.$row['senha'].'" class="form-control" id="ipt_senha">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Confirmar Senha*</label>
-                        <input type="password" name="conf_senha" value="'.$row['senha'].'" class="form-control" id="ipt_conf_senha">
                       </div>
                     </div>
                     <div class="col-md-3">
