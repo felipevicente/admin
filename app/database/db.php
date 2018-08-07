@@ -4,7 +4,7 @@
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'jquery_mobile');
+define('DB_NAME', 'vct_salao_teste');
   
 // habilita todas as exibições de erros
 ini_set('display_errors', true);
