@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  display_form();
+
   var dataTable = $('#tb_lista_usuario').DataTable({
         'paging'      : true,
         'lengthChange': true,
@@ -8,8 +10,6 @@ $(document).ready(function() {
         'info'        : true,
         'autoWidth'   : true
     });
-
-  display_form();
 
   function display_form(){
 
@@ -35,6 +35,7 @@ $(document).ready(function() {
     }
   }
 
+
   $("#btn_busca_avancada").click(function() {
     var busca_invisivel = $('#div_form_busca_avancada').hasClass('dis-none');
     
@@ -47,8 +48,10 @@ $(document).ready(function() {
     }
   });
 
+
   $(document).on('click', '.delete', function() {
         var id_usuario = $(this).attr("id");
+        $("#ipt_id_usuario").val(id_usuario);
 
         swal({
             title: "",
@@ -72,7 +75,7 @@ $(document).ready(function() {
                         swal("Registro Excluido!", "", "success");
                         $("#"+id_usuario).remove();
                     } 
-                    if(data ==="false") {
+                    if(data === "false") {
                         swal("Erro ao Excluir!", "", "alert");
                     }
                 }
@@ -81,26 +84,66 @@ $(document).ready(function() {
 
     });
 
-    $('#btn_alterar_senha').click(function(){
-               $.ajax({
-                    url: 'ajax/alterar_senha.php',
-                    method: 'POST',
-                    dataType: 'json',
-                    async: true,
-                    data: $("#form_alterar_senha").serialize(),
-                    success: function(data){
-                        switch(data){
-                            case "true":
-                                msg_alerta("Cadastrado realizado com sucesso!");
-                                break;
-                            case "false":
-                                msg_alerta("Erro ao cadastrar!");
-                                break;
-                            case "existe":
-                                msg_alerta("Email já cadastrado!");
-                                break;
-                        }
-                    }
-                });
+
+  $(document).on('click', '.alt_senha', function() {
+    var id_usuario = $(this).attr("id");
+    $("#ipt_id_usuario").val(id_usuario);
+    setTimeout(function() { $('#ipt_senha').focus() }, 500);
+  });
+
+
+  $('#btn_alterar_senha').click(function(){
+    var senha = $("#ipt_senha").val();
+    var conf_senha = $("#ipt_conf_senha").val();
+    var qtd_caracteres = parseInt($("#ipt_senha").val().length);
+
+    if(senha !== conf_senha){
+      swal({
+            title: "",
+            text: "Senhas incorretas.",
+            type: "warning",
+            confirmButtonText: "OK"
+        }, function () {
+            $('#form_alterar_senha').trigger("reset");
+            setTimeout(function() { $('#ipt_senha').focus() }, 500);
         });
+    } else if(qtd_caracteres < 5){
+      swal({
+            title: "",
+            text: "Digite uma senha apartir de 6 caracteres.",
+            type: "warning",
+            confirmButtonText: "OK"
+        }, function () {
+            $('#form_alterar_senha').trigger("reset");
+            setTimeout(function() { $('#ipt_senha').focus() }, 500);
+        });
+    } else {
+      $.ajax({
+          url: 'ajax/alterar_senha.php',
+          method: 'POST',
+          dataType: 'json',
+          async: true,
+          data: $("#form_alterar_senha").serialize(),
+          success: function(data){
+              switch(data){
+                  case "true":
+                    swal({
+                        title: "Feito!",
+                        text: "Cadastrado realizado com sucesso.",
+                        type: "success",
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+                    $('#modal_alterar_senha').modal('toggle');
+                    $('#form_alterar_senha').trigger("reset");
+                    break;
+                  default:
+                      alert(data);
+                      break;
+              }
+          }
+      });
+    }
+     
+    });
 });

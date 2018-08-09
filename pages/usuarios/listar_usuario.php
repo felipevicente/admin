@@ -142,31 +142,33 @@ $usuario = new Usuario();
         <div class="modal modal-success fade" id="modal_alterar_senha" style="display: none;">
           <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">Alterar senha</h4>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <form>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Senha*</label>
-                        <input type="password" name="senha" class="form-control" id="ipt_senha">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Confirmar Senha*</label>
-                        <input type="password" name="conf_senha" class="form-control" id="ipt_conf_senha">
-                      </div>
-                    </div>
-                  </form>
+              <form id="form_alterar_senha" method="post">
+                <div class="modal-header">
+                  <h4 class="modal-title">Alterar senha</h4>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn  btn-danger pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Fechar</button>
-                <button type="button" class="btn btn-outline"><i class="fa fa-check"></i>  Confirmar</button>
-              </div>
+                <div class="modal-body">
+                  <div class="row">
+                    
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Senha*</label>
+                          <input type="hidden" name="id_usuario" id="ipt_id_usuario">
+                          <input type="password" name="senha" class="form-control" id="ipt_senha">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label>Confirmar Senha*</label>
+                          <input type="password" name="conf_senha" class="form-control" id="ipt_conf_senha">
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn  btn-danger pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Fechar</button>
+                  <button type="button" class="btn btn-outline" id="btn_alterar_senha" data-type="autoclose-timer"><i class="fa fa-check"></i>  Confirmar</button>
+                </div>
+              </form>
             </div>
             <!-- /.modal-content -->
           </div>
