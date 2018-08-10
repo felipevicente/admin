@@ -9,7 +9,7 @@ class Usuario {
         $pdo = $con->conectar();
 
         //SQL
-        $sql = "SELECT id_usuario, ativo, sobre_nome, nome, email, telefone, data_cadastro
+        $sql = "SELECT id_usuario, ativo, nome, email, celular, data_cadastro
                 FROM usuario
                 ORDER BY id_usuario DESC";
         // SELECIONA OS REGISTROS
@@ -25,10 +25,10 @@ class Usuario {
                 }
                 echo '<tr id="'.$row['id_usuario'].'">
                         <td>'.$row['id_usuario'].'</td>
-                        <td>'.$row['nome'].' '.$row['sobre_nome'].'</td>
+                        <td>'.$row['nome'].'</td>
                         <td>'.$ativo.'</td>
                         <td>'.$row['email'].'</td>
-                        <td>'.$row['telefone'].'</td>
+                        <td>'.$row['celular'].'</td>
                         <td>'.date('d/m/Y H:i:s', strtotime($row['data_cadastro'])).'</td>
                         <td>
                           <div class="btn-group">
@@ -49,54 +49,6 @@ class Usuario {
         }
     }
 
-    /*public function buscaSimplesUsuario($busca){
-
-        if ($busca === "") {
-            echo $this->listarUsuario();
-        } else {
-            $con = new Conexao();
-            $pdo = $con->conectar();
-
-            //SQL
-            $sql = "SELECT id_usuario, nome, sobre_nome, ativo, email, telefone, data_cadastro
-                    FROM usuario
-                    WHERE id_usuario LIKE '%$busca%'
-                    OR nome LIKE '%$busca%'
-                    OR email LIKE '%$busca%'
-                    OR telefone LIKE '%$busca%'
-                    ORDER BY id_usuario DESC";
-            //SELECIONA OS REGISTROS
-            $stmt = $pdo->prepare($sql);
-
-            if($stmt->execute()){
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                    $ativo = $row['ativo'];
-                    if($ativo === "S"){
-                        $ativo = '<i class="glyphicon glyphicon-ok text-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Ativo">&nbsp;</i>';
-                    } else {
-                        $ativo = '<i class="glyphicon glyphicon glyphicon-remove text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Inativo">&nbsp;</i>';
-                    }
-                    echo '<tr id="'.$row['id_usuario'].'">
-                           <td>'.$row['id_usuario'].'</td>
-                           <td>'.$row['nome'].' '.$row['sobre_nome'].'</td>
-                           <td>'.$ativo.'</td>
-                           <td>'.$row['email'].'</td>
-                           <td>'.$row['telefone'].'</td>
-                           <td>'.date('d/m/Y H:i:s', strtotime($row['data_cadastro'])).'</td>
-                           <td>
-                             <a href="cadastar_usuario.php?editar='.$row['id_usuario'].'" class="btn btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar">
-                              <span class="glyphicon glyphicon-edit"></span>
-                             </a>
-                             <button name="delete" id="'.$row['id_usuario'].'" class="btn btn-xs btn-danger delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="Excluir">
-                              <span class="glyphicon glyphicon-remove"></span>
-                             </button>
-                            </td>
-                          </tr>';
-                }
-            }
-        }
-    }*/
-
     public function buscaAvancadaUsuario($busca){
 
         if ($busca['busca'] === "") {
@@ -110,7 +62,7 @@ class Usuario {
             $pdo = $con->conectar();
 
             //SQL
-            $sql = "SELECT id_usuario, nome, sobre_nome, ativo, email, telefone, data_cadastro
+            $sql = "SELECT id_usuario, nome, ativo, email, celular, data_cadastro
                     FROM usuario
                     WHERE $tipo_busca LIKE '%$valor_busca%'
                     ORDER BY id_usuario DESC";
@@ -127,10 +79,10 @@ class Usuario {
                     }
                     echo '<tr id="'.$row['id_usuario'].'">
                            <td>'.$row['id_usuario'].'</td>
-                           <td>'.$row['nome'].' '.$row['sobre_nome'].'</td>
+                           <td>'.$row['nome'].'</td>
                            <td>'.$ativo.'</td>
                            <td>'.$row['email'].'</td>
-                           <td>'.$row['telefone'].'</td>
+                           <td>'.$row['celular'].'</td>
                            <td>'.date('d/m/Y H:i:s', strtotime($row['data_cadastro'])).'</td>
                            <td>
                             <a href="cadastar_usuario.php?editar='.$row['id_usuario'].'" class="btn btn-xs btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Editar">
@@ -151,44 +103,38 @@ class Usuario {
 
     public function novoUsuario(){
         
-        $form = '<div class="col-md-6">
+        $form = '<div class="col-md-5">
                   <div class="form-group">
-                      <input type="hidden" name="id_usuario" class="form-control" id="ipt_id_usuario">
+                      <input type="hidden" name="id_usuario" class="form-control" id="ipt_id_usuario" maxlength="11">
                       <label>Nome*</label>
-                      <input type="text" name="nome" class="form-control" id="ipt_nome">
+                      <input type="text" name="nome" class="form-control" id="ipt_nome" maxlength="200" required="required" autofocus>
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Sobre Nome*</label>
-                      <input type="text" name="sobre_nome" class="form-control" id="ipt_sobre_nome">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
+                  <div class="col-md-5">
                     <div class="form-group">
                       <label>Email*</label>
-                      <input type="text" name="email" class="form-control" id="ipt_email">
+                      <input type="text" name="email" class="form-control" id="ipt_email" maxlength="150" required="required">
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-2">
                     <div class="form-group">
-                      <label>Telefone</label>
-                      <input type="text" name="telefone" class="form-control" id="ipt_telefone">
+                      <label>Celular</label>
+                      <input type="text" name="celular" class="form-control" id="ipt_celular" maxlength="30">
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-5">
                     <div class="form-group">
                       <label>Senha*</label>
-                      <input type="password" name="senha" class="form-control" id="ipt_senha">
+                      <input type="password" name="senha" class="form-control" id="ipt_senha" required="required">
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-5">
                     <div class="form-group">
                       <label>Confirmar Senha*</label>
-                      <input type="password" name="conf_senha" class="form-control" id="ipt_conf_senha">
+                      <input type="password" name="conf_senha" class="form-control" id="ipt_conf_senha" required="required">
                     </div>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-2">
                     <div class="form-group">
                       <label>Ativo</label>
                       <select name="ativo" class="form-control" id="opt_ativo">
@@ -196,6 +142,28 @@ class Usuario {
                         <option value="N">Não</option>
                       </select>
                     </div>
+                  </div>
+                  <div class="col-md-12 col-md-offset-0 no-padding">
+                    <div class="col-md-4">
+                      <div class="box box-success well well-sm">
+                        <div class="box-header">
+                          <h3 class="box-title">Foto</h3>
+                        </div>
+                        <div class="box-body">
+                          <div class="col-md-12">
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                              <span class="btn btn-success btn-file"><span>Escolher Imagem</span><input type="file" /></span>
+                              <span class="fileinput-filename"></span><span class="fileinput-new">Nenhuma imagem selecionada</span>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="container" style="padding-bottom: 12px">
+                              <img src="../../uploads/img/user_eloisa.jpg" class="img-circle" height="200px" width="200px" alt="User Image"> 
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
                   </div>';
 
         return $form;
@@ -214,7 +182,6 @@ class Usuario {
         $resultado = $stmt->fetchAll(); //TRÁS RESULTADO DO SELECT
 
         foreach ($resultado as $row)
-
           $s = '';
           $n = '';
           switch ($row['ativo']) {
@@ -230,31 +197,25 @@ class Usuario {
                     <div class="form-group">
                         <input type="hidden" name="id_usuario" value="'.$row['id_usuario'].'" class="form-control" id="ipt_id_usuario">
                         <label>Nome*</label>
-                        <input type="text" name="nome" value="'.$row['nome'].'" class="form-control" id="ipt_nome">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label>Sobre Nome*</label>
-                        <input type="text" name="sobre_nome" value="'.$row['sobre_nome'].'" class="form-control" id="ipt_sobre_nome">
+                        <input type="text" name="nome" value="'.$row['nome'].'" class="form-control" id="ipt_nome" required="required">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Email*</label>
-                        <input type="text" name="email" value="'.$row['email'].'" class="form-control" id="ipt_email">
+                        <input type="text" name="email" value="'.$row['email'].'" class="form-control" id="ipt_email" required="required">
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label>Telefone</label>
-                        <input type="text" name="telefone" value="'.$row['telefone'].'" class="form-control" id="ipt_telefone">
+                        <label>Celular</label>
+                        <input type="text" name="celular" value="'.$row['celular'].'" class="form-control" id="ipt_celular">
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group">
                         <label>Ativo</label>
-                        <select name="ativo" value="N" class="form-control" id="opt_ativo">
+                        <select name="ativo" class="form-control" id="opt_ativo">
                           <option value="S" '.$s.'>Sim</option>
                           <option value="N" '.$n.';>Não</option>
                         </select>
@@ -264,34 +225,33 @@ class Usuario {
     }
 
     public function cadastrarUsuario($post){
-      //var_dump($post);
 
         $con = new Conexao();
         $pdo = $con->conectar();
         $id_usuario = isset($post['id_usuario']) ? (int) $post['id_usuario'] : null;
-        //$id_usuario = $_GET['id_usuario'];
         $nome = $post['nome'];
-        $sobre_nome = $post['sobre_nome'];
         $email = $post['email'];
-        $telefone = $post['telefone'];
-        $senha = $post['senha'];
+        $celular = $post['celular'];
+        $senha = isset($post['senha']) ? md5($senha['senha']) : "";
         $ativo = $post['ativo'];
-        $data_cadastro = date('Y-m-d H:i');
+        $data_cadastro = date('Y-m-d H:i:s');
 
         if(empty($post['id_usuario'])){ //NOVO USUARIO
-            $sql = "INSERT INTO usuario(nome, sobre_nome, email, telefone, senha, ativo, data_cadastro) 
-                    VALUES ('$nome', '$sobre_nome', '$email', '$telefone', '$senha', '$ativo', '$data_cadastro')";
+            $sql = "INSERT INTO usuario(nome, email, celular, senha, ativo, data_cadastro) 
+                    VALUES ('$nome', '$email', '$celular', '$senha', '$ativo', '$data_cadastro')";
             // seleciona os registros
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
-            header("Location: listar_usuario.php");
         } else {
-            $sql = "UPDATE usuario SET nome = '$nome', sobre_nome = '$sobre_nome', email = '$email', telefone = '$telefone',
-                    senha = '$senha', ativo = '$ativo'
+            $sql = "UPDATE usuario SET nome = '$nome', email = '$email', celular = '$celular', ativo = '$ativo'
                     WHERE id_usuario = '$id_usuario'";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
-            header("Location: listar_usuario.php");
+        }
+        if ($stmt->execute()) {
+          header("Location: listar_usuario.php");   
+        } else {
+          die(print_r($stmt->errorInfo()));
         }
     }
 }

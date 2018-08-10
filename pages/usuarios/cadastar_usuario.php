@@ -26,8 +26,8 @@ if (isset($_POST['btn_salvar'])){ //CADASTRAR USUARIO
   <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="../../plugins/jasny-bootstrap/css/jasny-bootstrap.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -98,6 +98,7 @@ if (isset($_POST['btn_salvar'])){ //CADASTRAR USUARIO
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="../../bower_components/fastclick/app/fastclick.js"></script>
+<script src="../../plugins/jasny-bootstrap/js/jasny-bootstrap.js"></script>
 <script src="../../dist/js/adminlte.min.js"></script>
 <script src="../../dist/js/demo.js"></script>
 <script src="../../dist/js/geral.js"></script>

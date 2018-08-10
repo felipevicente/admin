@@ -17,7 +17,7 @@
         <div class="pull-left info">
           <p>
             <?php
-              echo $_SESSION['sessao_dados_usuario']['nome'] .' '. $_SESSION['sessao_dados_usuario']['sobre_nome'];
+              echo $_SESSION['sessao_dados_usuario']['nome'];
             ?>
           </p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>

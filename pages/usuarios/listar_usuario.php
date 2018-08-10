@@ -31,10 +31,9 @@ $usuario = new Usuario();
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
   <!-- Sweetalert Css -->
-  <link href="../../plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../plugins/sweetalert/sweetalert.css">
   <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -87,7 +86,6 @@ $usuario = new Usuario();
                             <select name="tipo_busca" class="form-control" autocomplete="off" id="tipo_busca">
                             <option value="id_usuario">Código</option>
                             <option value="nome">Nome</option>
-                            <option value="sobre_nome">Sobre Nome</option>
                             <option value="ativo">Ativo</option>
                             <option value="email">Email</option>
                             <option value"telefone" >Telefone</option>
@@ -112,7 +110,7 @@ $usuario = new Usuario();
                 <thead>
                 <tr>
                   <th>Código</th>
-                  <th>Nome / Sobre Nome</th>
+                  <th>Nome</th>
                   <th>Ativo</th>
                   <th>Email</th>
                   <th>Telefone</th>

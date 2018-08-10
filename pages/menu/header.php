@@ -225,7 +225,7 @@
               ?> 
               <span class="hidden-xs">
                 <?php
-                  echo $_SESSION['sessao_dados_usuario']['nome'] .' '. $_SESSION['sessao_dados_usuario']['sobre_nome'];
+                  echo $_SESSION['sessao_dados_usuario']['nome'];
                 ?>
               </span>
             </a>
@@ -238,28 +238,13 @@
                 } else {
                   echo '<img src="../img/user.png " class="img-circle" alt="User Image">';
                 }
-                //echo '<img src="../../uploads/img/'.$_SESSION['sessao_dados_usuario']['foto'].'" class="img-circle" alt="User Image">'
               ?>
                 <p>
                   <?php
-                    echo $_SESSION['sessao_dados_usuario']['nome'] .' '. $_SESSION['sessao_dados_usuario']['sobre_nome'];
+                    echo $_SESSION['sessao_dados_usuario']['nome'];
                   ?>
                 </p>
               </li>
-              <!-- Menu Body -->
-              <!-- <li class="user-body">
-                <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                  </div>
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                  </div>
-                </div>
-              </li> -->
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">

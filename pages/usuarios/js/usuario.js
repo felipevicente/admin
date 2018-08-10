@@ -72,7 +72,13 @@ $(document).ready(function() {
                 },
                 success: function(data) {
                     if(data === "true"){
-                        swal("Registro Excluido!", "", "success");
+                        swal({
+                          title: "Feito!",
+                          text: "Registro Excluido!",
+                          type: "success",
+                          timer: 2000,
+                          showConfirmButton: false
+                        });
                         $("#"+id_usuario).remove();
                     } 
                     if(data === "false") {

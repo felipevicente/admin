@@ -10,7 +10,7 @@ class Sessao {
 		// abre a conexão
 		$PDO = $con->conectar();
 		//SQL
-		$sql = "SELECT id_usuario, nome, sobre_nome, email, foto
+		$sql = "SELECT id_usuario, nome, email, foto
 				FROM usuario
         	    WHERE email = '$email'";
 
@@ -23,7 +23,6 @@ class Sessao {
             while ($resultado = $stmt->fetch(PDO::FETCH_ASSOC)){
             	$array_dados_usuario['id_usuario'] = $resultado['id_usuario'];
             	$array_dados_usuario['nome'] = $resultado['nome'];
-            	$array_dados_usuario['sobre_nome'] = $resultado['sobre_nome'];
             	$array_dados_usuario['email'] = $resultado['email'];
             	$array_dados_usuario['foto'] = $resultado['foto'];
             }
