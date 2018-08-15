@@ -196,7 +196,7 @@ class Usuario {
                         <label>Ativo</label>
                         <select name="ativo" class="form-control" id="opt_ativo">
                           <option value="S" '.$s.'>Sim</option>
-                          <option value="N" '.$n.';>Não</option>
+                          <option value="N" '.$n.'>Não</option>
                         </select>
                       </div>
                     </div>';
@@ -204,11 +204,23 @@ class Usuario {
     }
 
     public function erroValidarUsuario($post){
+
+      $s = '';
+      $n = '';
+      switch ($post['ativo']) {
+        case 'S':
+          $s = 'selected="selected"';
+          break;
+        case 'N':
+          $n = 'selected="selected"';
+          break;
+      }
+
       $form = '<div class="col-md-5">
                   <div class="form-group">
                       <input type="hidden" name="id_usuario" class="form-control" id="ipt_id_usuario" maxlength="11">
                       <label>Nome*</label>
-                      <input type="text" name="nome" value="'.$post["nome"].'" class="form-control" id="ipt_nome" maxlength="200" required="required" autofocus>
+                      <input type="text" name="nome" value="'.$post["nome"].'" class="form-control" id="ipt_nome" maxlength="200" required="required">
                     </div>
                   </div>
                   <div class="col-md-5">
@@ -239,8 +251,8 @@ class Usuario {
                     <div class="form-group">
                       <label>Ativo</label>
                       <select name="ativo" class="form-control" id="opt_ativo">
-                        <option value="S">Sim</option>
-                        <option value="N">Não</option>
+                        <option value="S" '.$s.'>Sim</option>
+                        <option value="N" '.$n.'>Não</option>
                       </select>
                     </div>
                   </div>';
