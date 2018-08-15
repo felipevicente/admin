@@ -61,13 +61,17 @@ $editar = isset($_GET['editar']) ? (int) $_GET['editar'] : null;
               <form method="POST" action="cadastar_usuario.php" id="form_usuario" role="form">
                 <?php
                     if (isset($_POST['btn_salvar'])){ //CADASTRAR USUARIO
-                      $usuario->cadastrarUsuario($_POST);
+                      $usuario->validarUsuario($_POST);
+                    } else if (!empty($editar)){
+                      $usuario->editarUsuario($editar);
+                    } else {
+                      $usuario->novoUsuario(); // NOVO USUARIO
                     }
-                    if (empty($editar)) {
+                    /*if (empty($editar)) {
                       echo $usuario->novoUsuario(); // NOVO USUARIO
                     } else {
                       echo $usuario->editarUsuario($editar); //EDITAR USUARIO
-                    }
+                    }*/
                 ?>
                 <div class="box-footer">
                   <div class="col-md-12">

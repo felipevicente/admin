@@ -145,7 +145,7 @@ class Usuario {
                     </div>
                   </div>';
 
-        return $form;
+        echo $form;
     }
 
     public function editarUsuario($id = null){
@@ -200,7 +200,55 @@ class Usuario {
                         </select>
                       </div>
                     </div>';
-      return $form;
+      echo $form;
+    }
+
+    public function erroValidarUsuario($post){
+      $form = '<div class="col-md-5">
+                  <div class="form-group">
+                      <input type="hidden" name="id_usuario" class="form-control" id="ipt_id_usuario" maxlength="11">
+                      <label>Nome*</label>
+                      <input type="text" name="nome" value="'.$post["nome"].'" class="form-control" id="ipt_nome" maxlength="200" required="required" autofocus>
+                    </div>
+                  </div>
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <label>Email*</label>
+                      <input type="text" name="email" value="'.$post["email"].'" class="form-control" id="ipt_email" maxlength="150" required="required">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Celular</label>
+                      <input type="text" name="celular" value="'.$post["celular"].'" class="form-control" id="ipt_celular" maxlength="15">
+                    </div>
+                  </div>
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <label>Senha*</label>
+                      <input type="password" name="senha" class="form-control" id="ipt_senha" maxlength="32" required="required">
+                    </div>
+                  </div>
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <label>Confirmar Senha*</label>
+                      <input type="password" name="conf_senha" class="form-control" id="ipt_conf_senha" maxlength="32" required="required">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label>Ativo</label>
+                      <select name="ativo" class="form-control" id="opt_ativo">
+                        <option value="S">Sim</option>
+                        <option value="N">Não</option>
+                      </select>
+                    </div>
+                  </div>';
+      echo $form;
+    }
+
+    function validarUsuario($post){
+      $this->erroValidarUsuario($post);
     }
 
     public function cadastrarUsuario($post){
@@ -216,8 +264,9 @@ class Usuario {
         $data_cadastro = date('Y-m-d H:i:s');
 
         if(empty($post['id_usuario'])){ //NOVO USUARIO
-            $msg = new msg();
-            $msg->msgErro("Dados Incorretos.");
+            /*$msg = new msg();
+            $msg->msgErro("Dados Incorretos.");*/
+            $this->validarUsuario($post);
             //$this->dadosFormulario($post);
             /*$sql = "INSERT INTO usuario(nome, email, celular, senha, ativo, data_cadastro) 
                       VALUES ('$nome', '$email', '$celular', '$senha', '$ativo', '$data_cadastro')";
