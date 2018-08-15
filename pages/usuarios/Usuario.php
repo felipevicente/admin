@@ -217,7 +217,7 @@ class Usuario {
 
         if(empty($post['id_usuario'])){ //NOVO USUARIO
             $msg = new msg();
-            $msg->msgErro("Email já cadastrado");
+            $msg->msgErro("Dados Incorretos.");
             //$this->dadosFormulario($post);
             /*$sql = "INSERT INTO usuario(nome, email, celular, senha, ativo, data_cadastro) 
                       VALUES ('$nome', '$email', '$celular', '$senha', '$ativo', '$data_cadastro')";
