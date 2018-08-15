@@ -9,9 +9,9 @@ $usuario = new Usuario();
 
 $editar = isset($_GET['editar']) ? (int) $_GET['editar'] : null;
 
-if (isset($_POST['btn_salvar'])){ //CADASTRAR USUARIO
+/*if (isset($_POST['btn_salvar'])){ //CADASTRAR USUARIO
   $usuario->cadastrarUsuario($_POST);
-}
+}*/
 
 ?>
 <!DOCTYPE html>
@@ -60,6 +60,9 @@ if (isset($_POST['btn_salvar'])){ //CADASTRAR USUARIO
             <div class="box-body">
               <form method="POST" action="cadastar_usuario.php" id="form_usuario" role="form">
                 <?php
+                    if (isset($_POST['btn_salvar'])){ //CADASTRAR USUARIO
+                      $usuario->cadastrarUsuario($_POST);
+                    }
                     if (empty($editar)) {
                       echo $usuario->novoUsuario(); // NOVO USUARIO
                     } else {
@@ -97,10 +100,15 @@ if (isset($_POST['btn_salvar'])){ //CADASTRAR USUARIO
 <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="../../bower_components/fastclick/app/fastclick.js"></script>
 <script src="../../plugins/jasny-bootstrap/js/jasny-bootstrap.js"></script>
 <script src="../../dist/js/adminlte.min.js"></script>
 <script src="../../dist/js/demo.js"></script>
 <script src="../../dist/js/geral.js"></script>
+
+<script src="../../plugins/jQuery-Mask/dist/jquery.mask.min.js"></script>
+
+<script>
+  $('#ipt_celular').mask('(00) 00000-0000');
+</script>
 </body>
 </html>

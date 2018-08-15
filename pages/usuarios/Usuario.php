@@ -1,6 +1,7 @@
 <?php 
 
 require_once '../../app/database/Conexao.php';
+require_once '../../app/outros/msg.php';
 
 class Usuario {
 
@@ -119,19 +120,19 @@ class Usuario {
                   <div class="col-md-2">
                     <div class="form-group">
                       <label>Celular</label>
-                      <input type="text" name="celular" class="form-control" id="ipt_celular" maxlength="30">
+                      <input type="text" name="celular" class="form-control" id="ipt_celular" maxlength="15">
                     </div>
                   </div>
                   <div class="col-md-5">
                     <div class="form-group">
                       <label>Senha*</label>
-                      <input type="password" name="senha" class="form-control" id="ipt_senha" required="required">
+                      <input type="password" name="senha" class="form-control" id="ipt_senha" maxlength="32" required="required">
                     </div>
                   </div>
                   <div class="col-md-5">
                     <div class="form-group">
                       <label>Confirmar Senha*</label>
-                      <input type="password" name="conf_senha" class="form-control" id="ipt_conf_senha" required="required">
+                      <input type="password" name="conf_senha" class="form-control" id="ipt_conf_senha" maxlength="32" required="required">
                     </div>
                   </div>
                   <div class="col-md-2">
@@ -142,28 +143,6 @@ class Usuario {
                         <option value="N">Não</option>
                       </select>
                     </div>
-                  </div>
-                  <div class="col-md-12 col-md-offset-0 no-padding">
-                    <div class="col-md-4">
-                      <div class="box box-success well well-sm">
-                        <div class="box-header">
-                          <h3 class="box-title">Foto</h3>
-                        </div>
-                        <div class="box-body">
-                          <div class="col-md-12">
-                            <div class="fileinput fileinput-new" data-provides="fileinput">
-                              <span class="btn btn-success btn-file"><span>Escolher Imagem</span><input type="file" /></span>
-                              <span class="fileinput-filename"></span><span class="fileinput-new">Nenhuma imagem selecionada</span>
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="container" style="padding-bottom: 12px">
-                              <img src="../../uploads/img/user_eloisa.jpg" class="img-circle" height="200px" width="200px" alt="User Image"> 
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
                   </div>';
 
         return $form;
@@ -193,26 +172,26 @@ class Usuario {
               break;
           }
 
-          $form = '<div class="col-md-6">
+          $form = '<div class="col-md-5">
                     <div class="form-group">
-                        <input type="hidden" name="id_usuario" value="'.$row['id_usuario'].'" class="form-control" id="ipt_id_usuario">
+                        <input type="hidden" name="id_usuario" value="'.$row['id_usuario'].'" class="form-control" id="ipt_id_usuario" maxlength="11">
                         <label>Nome*</label>
-                        <input type="text" name="nome" value="'.$row['nome'].'" class="form-control" id="ipt_nome" required="required">
+                        <input type="text" name="nome" value="'.$row['nome'].'" class="form-control" id="ipt_nome" maxlength="200" required="required">
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                       <div class="form-group">
                         <label>Email*</label>
-                        <input type="text" name="email" value="'.$row['email'].'" class="form-control" id="ipt_email" required="required">
+                        <input type="text" name="email" value="'.$row['email'].'" class="form-control" id="ipt_email" maxlength="150" required="required">
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-2">
                       <div class="form-group">
                         <label>Celular</label>
-                        <input type="text" name="celular" value="'.$row['celular'].'" class="form-control" id="ipt_celular">
+                        <input type="text" name="celular" value="'.$row['celular'].'" class="form-control" id="ipt_celular" maxlength="15">
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                       <div class="form-group">
                         <label>Ativo</label>
                         <select name="ativo" class="form-control" id="opt_ativo">
@@ -232,27 +211,27 @@ class Usuario {
         $nome = $post['nome'];
         $email = $post['email'];
         $celular = $post['celular'];
-        $senha = isset($post['senha']) ? md5($senha['senha']) : "";
+        $senha = isset($post['senha']) ? md5($post['senha']) : "";
         $ativo = $post['ativo'];
         $data_cadastro = date('Y-m-d H:i:s');
 
         if(empty($post['id_usuario'])){ //NOVO USUARIO
-            $sql = "INSERT INTO usuario(nome, email, celular, senha, ativo, data_cadastro) 
-                    VALUES ('$nome', '$email', '$celular', '$senha', '$ativo', '$data_cadastro')";
-            // seleciona os registros
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute();
+            $msg = new msg();
+            $msg->msgErro("Email já cadastrado");
+            //$this->dadosFormulario($post);
+            /*$sql = "INSERT INTO usuario(nome, email, celular, senha, ativo, data_cadastro) 
+                      VALUES ('$nome', '$email', '$celular', '$senha', '$ativo', '$data_cadastro')";
+            $stmt = $pdo->prepare($sql);*/
         } else {
             $sql = "UPDATE usuario SET nome = '$nome', email = '$email', celular = '$celular', ativo = '$ativo'
                     WHERE id_usuario = '$id_usuario'";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute();
         }
-        if ($stmt->execute()) {
-          header("Location: listar_usuario.php");   
+        /*if ($stmt->execute()) {
+          header("Location: listar_usuario.php");
         } else {
           die(print_r($stmt->errorInfo()));
-        }
+        }*/
     }
 }
 ?>
