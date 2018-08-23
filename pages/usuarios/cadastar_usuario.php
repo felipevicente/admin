@@ -4,14 +4,9 @@ $sessao = new Sessao();
 $sessao->logado(); //VERIFICA SE O USUARIO ESTÁ LOGADO
 
 require_once 'Usuario.php';
+$usuario = new usuario();
 
-$usuario = new Usuario();
-
-$editar = isset($_GET['editar']) ? (int) $_GET['editar'] : null;
-
-/*if (isset($_POST['btn_salvar'])){ //CADASTRAR USUARIO
-  $usuario->cadastrarUsuario($_POST);
-}*/
+$editar = isset($_GET['editar']) ? (int) $_GET['editar'] : null; //SE ESTIVER GET EDITAR
 
 ?>
 <!DOCTYPE html>
@@ -19,14 +14,13 @@ $editar = isset($_GET['editar']) ? (int) $_GET['editar'] : null;
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>VCT Solution - Cadastro de Usuários</title>
+  <title>VCT Solutions - Cadastro de Usuários</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css"> -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="../../plugins/jasny-bootstrap/css/jasny-bootstrap.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -63,15 +57,10 @@ $editar = isset($_GET['editar']) ? (int) $_GET['editar'] : null;
                     if (isset($_POST['btn_salvar'])){ //CADASTRAR USUARIO
                       $usuario->validarUsuario($_POST);
                     } else if (!empty($editar)){
-                      $usuario->editarUsuario($editar);
+                      $usuario->editarUsuario($editar); //EDITAR USUÁRIO
                     } else {
                       $usuario->novoUsuario(); // NOVO USUARIO
                     }
-                    /*if (empty($editar)) {
-                      echo $usuario->novoUsuario(); // NOVO USUARIO
-                    } else {
-                      echo $usuario->editarUsuario($editar); //EDITAR USUARIO
-                    }*/
                 ?>
                 <div class="box-footer">
                   <div class="col-md-12">

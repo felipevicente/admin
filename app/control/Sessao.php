@@ -40,6 +40,7 @@ class Sessao {
 
 	public function logado(){ //VERIFICA SE TIVER LOGADO NAS PÁGINAS PADRÕES
 		session_start();
+		ob_start(); //GAMBIARRA PARA CARREGAR O HEADER
 		if (empty($_SESSION['sessao_ativo'])) {
 			$this->logout();
 		}
@@ -48,6 +49,7 @@ class Sessao {
 	public function logout(){ //REMOVE TODAS SESSÕES E DESLOGA USUARIO
 		session_start();
 		session_destroy();
+		ob_end_flush(); //GAMBIARRA PARA FINALIZAR O HEADER
 
 		unset(
 			$_SESSION['sessao_ativo'],

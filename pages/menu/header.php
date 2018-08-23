@@ -218,8 +218,9 @@
               <?php
               if (!empty($_SESSION['sessao_dados_usuario']['foto'])) {
                 echo '<img src="../../uploads/img/'.$_SESSION['sessao_dados_usuario']['foto'].'" class="user-image" alt="User Image"';
+                echo '<img src="../../uploads/img/'.$_SESSION['sessao_dados_usuario']['foto'].'" class="user-image" alt="User Image">';
               } else {
-                echo '<img src="../img/user.png " class="user-image" alt="User Image">';
+                echo '<img src="../../uploads/img/user.png " class="user-image" alt="User Image">';
               }
                 //echo '<img src="../../uploads/img/'.$_SESSION['sessao_dados_usuario']['foto'].'" class="user-image" alt="User Image">'
               ?> 
@@ -236,7 +237,7 @@
                 if (!empty($_SESSION['sessao_dados_usuario']['foto'])) {
                   echo '<img src="../../uploads/img/'.$_SESSION['sessao_dados_usuario']['foto'].'" class="img-circle" alt="User Image">';
                 } else {
-                  echo '<img src="../img/user.png " class="img-circle" alt="User Image">';
+                  echo '<img src="../../uploads/img/user.png " class="img-circle" alt="User Image">';
                 }
               ?>
                 <p>
@@ -259,10 +260,6 @@
                 </div>
               </li>
             </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
         </ul>
       </div>
